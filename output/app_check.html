@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Customs — App Check</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f6f4f0;
+      color: #1f2124;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.55;
+    }
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+    h1 { margin: 0 0 0.25rem; font-size: 1.8rem; }
+    h2 { margin: 0 0 0.75rem; font-size: 1.3rem; }
+    h3 { margin: 1.5rem 0 0.5rem; font-size: 1rem; }
+    .meta { margin: 0 0 1.5rem; color: #5f5e5a; }
+    .summary { width: 100%; border-collapse: collapse; margin: 0 0 2.5rem; background: #fff; }
+    .summary th, .summary td { padding: 0.6rem 0.8rem; border: 1px solid #ddd8ce; text-align: left; vertical-align: top; }
+    .summary th { background: #ece8e0; }
+    .pass { display: inline-block; padding: 0.1rem 0.55rem; border-radius: 4px; background: #e3f0dc; color: #27500a; font-weight: 600; font-size: 0.85rem; }
+    section { background: #fff; border: 1px solid #ddd8ce; border-radius: 10px; padding: 1.5rem 1.75rem; margin: 0 0 2rem; }
+    .steps { margin: 0 0 1rem; padding-left: 1.2rem; }
+    figure { margin: 1.25rem 0 0; }
+    figure img { display: block; width: 100%; border: 1px solid #ddd8ce; border-radius: 6px; }
+    figcaption { margin-top: 0.5rem; font-size: 0.92rem; color: #444441; }
+    .data { border-collapse: collapse; margin: 0.25rem 0 0; font-size: 0.92rem; }
+    .data th, .data td { padding: 0.35rem 0.8rem; border: 1px solid #ddd8ce; text-align: left; }
+    .data th { background: #f1efe8; }
+    .ok { color: #27500a; font-weight: 600; }
+    code { background: #f1efe8; padding: 0.05rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Campus Customs — App Check</h1>
+  <p class="meta">
+    Tested October 5, 2026 on the local site (React + Vite frontend at <code>localhost:5173</code>, FastAPI backend at
+    <code>localhost:8000</code>) as a guest user. Database: <code>data/campus_customs.db</code>.
+  </p>
+
+  <table class="summary">
+    <tr><th>#</th><th>Check</th><th>Result</th></tr>
+    <tr>
+      <td>1</td>
+      <td>Chat agent reports an item's inventory level and price, and both match the database</td>
+      <td><span class="pass">PASS</span></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Asking about hoodies makes dynamic search-result cards appear on the page</td>
+      <td><span class="pass">PASS</span></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>One-tap starter questions appear before the user types anything</td>
+      <td><span class="pass">PASS</span></td>
+    </tr>
+  </table>
+
+  <!-- Check 1 -->
+  <section id="check-1">
+    <h2>Check 1 — Inventory level and price match the database <span class="pass">PASS</span></h2>
+    <ol class="steps">
+      <li>Opened the Baseball Left Chest Crewneck page and the chat.</li>
+      <li>Asked: <em>"How many of the Baseball Left Chest Crewneck are in stock in size M, and how much is it?"</em></li>
+      <li>Queried <code>campus_customs.db</code> directly and compared.</li>
+    </ol>
+
+    <figure>
+      <img src="app_check_images/check1_agent_stock_reply.jpg" alt="Chat agent reply: 5 in size M, low stock, price $58.00, with a size grid" />
+      <figcaption>
+        The agent answered "5 in size M — low stock" and "$58.00", and attached a size grid (XS Out, S 15, M 5, L 25,
+        XL Out, XXL 25; 70 total) with the requested size outlined.
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="app_check_images/check1_database_query.jpg" alt="SQL queries and results from campus_customs.db for the Baseball Left Chest Crewneck" />
+      <figcaption>
+        Direct database query of the <code>catalogue</code> and <code>inventory</code> tables: price 58.00, size M = 5,
+        total 70.
+      </figcaption>
+    </figure>
+
+    <h3>Agent vs. database</h3>
+    <table class="data">
+      <tr><th>Field</th><th>Agent said</th><th>Database</th><th>Match</th></tr>
+      <tr><td>Price</td><td>$58.00</td><td>58.0</td><td class="ok">✓</td></tr>
+      <tr><td>Size M quantity</td><td>5 (low stock)</td><td>5</td><td class="ok">✓</td></tr>
+      <tr><td>XS / XL</td><td>Out / Out</td><td>0 / 0</td><td class="ok">✓</td></tr>
+      <tr><td>S / L / XXL</td><td>15 / 25 / 25</td><td>15 / 25 / 25</td><td class="ok">✓</td></tr>
+      <tr><td>Total in stock</td><td>70</td><td>70</td><td class="ok">✓</td></tr>
+    </table>
+  </section>
+
+  <!-- Check 2 -->
+  <section id="check-2">
+    <h2>Check 2 — Hoodie question shows dynamic search-result cards <span class="pass">PASS</span></h2>
+    <ol class="steps">
+      <li>Started on the home page and opened the chat.</li>
+      <li>Asked: <em>"What hoodies do you have?"</em></li>
+      <li>Watched the page update, then clicked a result card.</li>
+    </ol>
+
+    <figure>
+      <img src="app_check_images/check2_agent_hoodie_reply.jpg" alt="Agent replies about hoodies while the Products page shows a Hoodies results section" />
+      <figcaption>
+        The agent replied with a <code>product_search</code> answer ("Here are our hoodies"). The site moved to the
+        Products page on its own and the chat notes "27 matches · show on page".
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="app_check_images/check2_search_result_cards.jpg" alt="Hoodies search results: cards with image, name, description, and price" />
+      <figcaption>
+        The "From your chat · Hoodies · 27 matches" section shows result cards built from the database, each with the
+        product image, name, short description, and price.
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="app_check_images/check2_card_opens_item_page.jpg" alt="Champion Full Zip Hood single-item page opened from a result card" />
+      <figcaption>
+        Clicking the Champion Full Zip Hood card opens its single-item page ($88.00, matching its card).
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- Check 3 -->
+  <section id="check-3">
+    <h2>Check 3 — One-tap starter questions before typing <span class="pass">PASS</span></h2>
+    <ol class="steps">
+      <li>Opened the chat on the home page without typing anything.</li>
+      <li>Opened the chat again from a product page using "Ask about this item".</li>
+    </ol>
+
+    <figure>
+      <img src="app_check_images/check3_starters_home.jpg" alt="Chat open on the home page with four starter question buttons and an empty input" />
+      <figcaption>
+        Home page: with an empty chat box and no messages sent, four starter buttons appear — "Do you have any
+        hoodies?", "Gift ideas under $60", "What's in stock in size M?", "Show me quarter-zips".
+      </figcaption>
+    </figure>
+
+    <figure>
+      <img src="app_check_images/check3_starters_product.jpg" alt="Chat open on a product page with product-specific starter questions" />
+      <figcaption>
+        Product page: the starters switch to questions about the item being viewed — "How much is this?", "Which sizes
+        are in stock?", "Do you have this in another color?", "Show me similar items". (The highlighted button is just
+        the mouse resting on it.)
+      </figcaption>
+    </figure>
+  </section>
+</main>
+</body>
+</html>

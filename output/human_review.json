@@ -1,0 +1,15 @@
+[
+  {
+    "report_id": "HR-C2103CEF",
+    "time": "2026-10-05T21:32:09+00:00",
+    "run_id": "run-c5d32e0cf9",
+    "user": "guest",
+    "shopper_message": "check the stock for the Purple Unicorn Jacket, the Neon Dragon Scarf, the Gold Penguin Hat, and the Silver Moose Vest",
+    "reason": "The requested stock lookup could not identify three of the four named products, and the request has reached the lookup limit.",
+    "details": {
+      "filed_by": "agent",
+      "what_was_tried": "Checked stock for Purple Unicorn Jacket, Neon Dragon Scarf, Gold Penguin Hat, and Silver Moose Vest; only the second lookup returned a catalogue product, which did not match the requested name."
+    },
+    "status": "open"
+  }
+]
