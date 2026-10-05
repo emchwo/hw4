@@ -231,3 +231,51 @@ _None yet._
 _None yet._
 
 **What the initial prompt lacked:** _TBD after any follow-ups._
+
+## Problem 13: Push to GitHub and submit the URL
+
+**Initial prompt:**
+> i need to publish all of this to a public GitHub repo. use .gitignore and do not put the .env, campus_customs.db, or product image files into the repo, use an .env.example instead
+>
+> here's the file layout:
+>
+> ```
+> hw4/
+> ├── AI_prompts.md
+> ├── requirements.txt
+> ├── .env.example
+> ├── .gitignore
+> ├── README.md
+> ├── frontend/                # Vite React TypeScript app
+> ├── backend/
+> │   ├── main.py              # FastAPI app — run with: uvicorn main:app --reload
+> │   ├── agent.py
+> │   ├── models.py
+> │   ├── tools.py
+> │   └── prompts/
+> │       └── prompt.md
+> └── output/
+>     ├── harness.md
+>     ├── design.md
+>     ├── usability.md
+>     ├── app_check.html
+>     ├── app_check_images/     # screenshots linked from app_check.html
+>     └── audit_trail.json
+> ```
+>
+> here's the local-only data pack, not in git:
+>
+> ```
+> data/
+> ├── campus_customs.db
+> └── products/                # images referenced by the catalogue
+> ```
+>
+> the agent is 4 files under backend: prompts/prompt.md, agent.py, tools.py, and models.py
+>
+> and create a README.md that will run the front end and back end after placing the data pack
+
+**Follow-up prompts:**
+_None yet._
+
+**What the initial prompt lacked:** _TBD after any follow-ups._
