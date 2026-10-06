@@ -78,6 +78,25 @@ def init_auth_tables() -> None:
             )
             """
         )
+    ensure_test_account()
+
+
+# The assignment's documented test login. The original data pack stores its password in an
+# older 3-part hash format this backend can't verify, so on startup we re-save it once in the
+# current format. Accounts already using the current format are never touched.
+TEST_ACCOUNT_EMAIL = "test@campuscustoms.yale.edu"
+TEST_ACCOUNT_PASSWORD = "password"
+
+
+def ensure_test_account() -> None:
+    with get_db() as conn:
+        row = conn.execute("SELECT password_hash FROM users WHERE email = ?", (TEST_ACCOUNT_EMAIL,)).fetchone()
+        if row is None or len(row["password_hash"].split("$")) == 4:
+            return
+        conn.execute(
+            "UPDATE users SET password_hash = ? WHERE email = ?",
+            (hash_password(TEST_ACCOUNT_PASSWORD), TEST_ACCOUNT_EMAIL),
+        )
 
 
 def _token_hash(token: str) -> str:

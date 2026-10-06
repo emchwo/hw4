@@ -19,6 +19,16 @@ Four improvements: two on the website (easier to use) and two on the agent/backe
 - **Shopper:** many people don't notice a chat bubble or don't know what to ask. The button sits right where they're deciding (next to the price), and the starters show what the assistant can do. One tap gets an answer, with no typing, which also helps on phones.
 - **Business:** more shoppers get their size or stock question answered on the spot instead of leaving the page. That means fewer abandoned visits and more add-to-cart moments. The starters also steer people toward questions the agent answers well (price, stock, similar items).
 
+**Evidence (running app)**
+
+![Ask about this item button on a product page](usability_images/1_ask_about_this_item_button.jpg)
+
+*The Yale Dad Hoodie page with the "Ask about this item" button under the price.*
+
+![Chat opened with product-specific starter questions](usability_images/2_product_starter_questions.jpg)
+
+*Clicking it opens the chat with one-tap questions about this item, before anything is typed.*
+
 ### 2. Richer chat answers: stock grid, price card, and formatted text
 
 **What was added**
@@ -30,6 +40,16 @@ Four improvements: two on the website (easier to use) and two on the agent/backe
 **Why it helps**
 - **Shopper:** availability is visible at a glance. "Out of stock in XS and XL" becomes impossible to miss, and they can see right away which other sizes work. Lists and bold text are easier to scan than a wall of text.
 - **Business:** clear stock answers set the right expectations, so there are fewer disappointed customers and support questions about sold-out sizes. The cards link back to the product page, keeping shoppers moving toward a purchase.
+
+**Evidence (running app)**
+
+![Price reply with a mini price card](usability_images/3_chat_price_card.jpg)
+
+*Tapping "How much is this?" returns the price with a mini price card linking to the item.*
+
+![Stock reply with a color-coded size grid](usability_images/4_chat_stock_grid.jpg)
+
+*"Which sizes are in stock?" returns a size grid: green in stock, amber low stock (XS and S, 5 each), 69 in total.*
 
 ---
 

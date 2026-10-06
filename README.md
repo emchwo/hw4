@@ -114,9 +114,10 @@ Open **http://localhost:5173**. Vite forwards `/api` and `/images` to the backen
 - **Shop:** browse Products, filter by category, open any item for price, colors, and stock by size.
 - **Chat:** the button in the bottom right opens the assistant. Try a starter question, or ask things like "do you have any hoodies?", "how many mediums of the Baseball Left Chest Crewneck are left?", or, on an item page, "do you have this in gray?".
 - **Accounts:** use **Create Account** to make a login. Logged-in shoppers' chats are saved and reload when they return.
-  - The seed accounts in the original data pack use an older password format and can't log in. To set a password for one, run this from `backend/` (it prompts for the new password):
+  - **Test login:** `test@campuscustoms.yale.edu` / `password`. The original data pack stores this account's password in an older format, so the backend re-saves it in the current format the first time it starts.
+  - The other seed accounts keep the older format and can't log in. To set a password for one, run this from `backend/` (it prompts for the new password):
     ```bash
-    python -m set_password test@campuscustoms.yale.edu
+    python -m set_password ada.1789818990@yale.edu
     ```
 
 ## Notes
