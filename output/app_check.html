@@ -59,7 +59,7 @@
     </tr>
     <tr>
       <td>3</td>
-      <td>One-tap starter questions appear before the user types anything</td>
+      <td>Problem 9 feature: one-tap starter questions appear before the user types anything</td>
       <td><span class="pass">PASS</span></td>
     </tr>
   </table>
@@ -76,16 +76,14 @@
     <figure>
       <img src="app_check_images/check1_agent_stock_reply.jpg" alt="Chat agent reply: 5 in size M, low stock, price $58.00, with a size grid" />
       <figcaption>
-        The agent answered "5 in size M — low stock" and "$58.00", and attached a size grid (XS Out, S 15, M 5, L 25,
-        XL Out, XXL 25; 70 total) with the requested size outlined.
+        The agent answered "5 in size M — low stock" and "$58.00". Its size grid shows stock for every size, 70 in total.
       </figcaption>
     </figure>
 
     <figure>
       <img src="app_check_images/check1_database_query.jpg" alt="SQL queries and results from campus_customs.db for the Baseball Left Chest Crewneck" />
       <figcaption>
-        Direct database query of the <code>catalogue</code> and <code>inventory</code> tables: price 58.00, size M = 5,
-        total 70.
+        Querying <code>campus_customs.db</code> directly gives the same price (58.00) and stock (M = 5, total 70).
       </figcaption>
     </figure>
 
@@ -112,16 +110,14 @@
     <figure>
       <img src="app_check_images/check2_agent_hoodie_reply.jpg" alt="Agent replies about hoodies while the Products page shows a Hoodies results section" />
       <figcaption>
-        The agent replied with a <code>product_search</code> answer ("Here are our hoodies"). The site moved to the
-        Products page on its own and the chat notes "27 matches · show on page".
+        The agent replied "Here are our hoodies," and the site moved to the Products page on its own.
       </figcaption>
     </figure>
 
     <figure>
       <img src="app_check_images/check2_search_result_cards.jpg" alt="Hoodies search results: cards with image, name, description, and price" />
       <figcaption>
-        The "From your chat · Hoodies · 27 matches" section shows result cards built from the database, each with the
-        product image, name, short description, and price.
+        The "From your chat · Hoodies · 27 matches" section shows result cards with image, name, short description, and price.
       </figcaption>
     </figure>
 
@@ -135,7 +131,11 @@
 
   <!-- Check 3 -->
   <section id="check-3">
-    <h2>Check 3 — One-tap starter questions before typing <span class="pass">PASS</span></h2>
+    <h2>Check 3 — Problem 9 feature: one-tap starter questions <span class="pass">PASS</span></h2>
+    <p>
+      This is usability improvement #1 from Problem 9 (<code>output/usability.md</code>): the "Ask about this item"
+      button plus one-tap starter questions that show before the shopper types anything.
+    </p>
     <ol class="steps">
       <li>Opened the chat on the home page without typing anything.</li>
       <li>Opened the chat again from a product page using "Ask about this item".</li>
@@ -144,17 +144,14 @@
     <figure>
       <img src="app_check_images/check3_starters_home.jpg" alt="Chat open on the home page with four starter question buttons and an empty input" />
       <figcaption>
-        Home page: with an empty chat box and no messages sent, four starter buttons appear — "Do you have any
-        hoodies?", "Gift ideas under $60", "What's in stock in size M?", "Show me quarter-zips".
+        Home page: with an empty chat box and no messages sent, four one-tap starter questions appear.
       </figcaption>
     </figure>
 
     <figure>
       <img src="app_check_images/check3_starters_product.jpg" alt="Chat open on a product page with product-specific starter questions" />
       <figcaption>
-        Product page: the starters switch to questions about the item being viewed — "How much is this?", "Which sizes
-        are in stock?", "Do you have this in another color?", "Show me similar items". (The highlighted button is just
-        the mouse resting on it.)
+        On a product page, "Ask about this item" opens the chat with starters about that item, like "How much is this?"
       </figcaption>
     </figure>
   </section>
